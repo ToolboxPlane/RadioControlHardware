@@ -103,18 +103,24 @@ module Front(){
 
 module JoyStickMount(){
     difference(){
-        cube([25.4, 31.75,20-5+wallThickness/2]);
-        translate([2.54, 2.54, 20-5+wallThickness/2-5]){
-            cylinder(h=10, d=3.2, center=false, $fn=res);
+        union(){
+            cube([25.4, 31.75,15+wallThickness/2]);
+            translate([-wallThickness, -wallThickness, 0]){
+                cube([25.4+2*wallThickness, 31.75+2*wallThickness,wallThickness]);
+            }
         }
-        translate([22.86,2.54 , 20-5+wallThickness/2-5]){
-            cylinder(h=10, d=3.2, center=true, $fn=res);
+        
+        translate([2.54, 2.54, (15+wallThickness/2)/2]){
+            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
         }
-        translate([2.54, 29.21, 20-5+wallThickness/2-5]){
-            cylinder(h=10, d=3.2, center=true, $fn=res);
+        translate([22.86,2.54 , (15+wallThickness/2)/2]){
+            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
         }
-        translate([22.86, 29.21, 20-5+wallThickness/2-5]){
-            cylinder(h=10, d=3.2, center=true, $fn=res);
+        translate([2.54, 29.21, (15+wallThickness/2)/2]){
+            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
+        }
+        translate([22.86, 29.21, (15+wallThickness/2)/2]){
+            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
         }
     }
 }
@@ -198,7 +204,7 @@ module RemoteHalf(){
     
     color("LightGrey"){
         // Top
-        difference(){
+        /*difference(){
             translate([0,-40,44-wallThickness]){
                 BasePlate();
             }
@@ -215,7 +221,7 @@ module RemoteHalf(){
             translate([62-10-wallThickness+5,85-10+5-40,44-wallThickness/2]){
                 cylinder(h=wallThickness, d=3.2, center=true, $fn=res);
             }
-        }
+        }*/
         
         // Bottom
         translate([0,-40,5-wallThickness/2]){
@@ -257,8 +263,21 @@ module RemoteHalf(){
                 translate([62-wallThickness-5,85-10+5,20]){
                     cylinder(h=40, d=3.2, center=true, $fn=res);
                 }
+                translate([32,40,0]){
+                    translate([2.54, 2.54, wallThickness/2]){
+                        cylinder(h=wallThickness, d=8, center=true, $fn=res);
+                    }
+                    translate([22.86,2.54 , wallThickness/2]){
+                        cylinder(h=wallThickness, d=8, center=true, $fn=res);
+                    }
+                    translate([2.54, 29.21, wallThickness/2]){
+                        cylinder(h=wallThickness, d=8, center=true, $fn=res);
+                    }
+                    translate([22.86, 29.21, wallThickness/2]){
+                        cylinder(h=wallThickness, d=8, center=true, $fn=res);
+                    }
+                }
             }
-            
         }
         
         translate([0,-38,-15+wallThickness/2]){
@@ -276,7 +295,7 @@ module RemoteHalf(){
             Front();
         }
         
-        translate([32,0,5-wallThickness/2]){
+        translate([32,0,5+wallThickness/2]){
             JoyStickMount();
         }
     }
