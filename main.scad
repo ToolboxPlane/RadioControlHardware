@@ -1,4 +1,4 @@
-res = 8;
+res = 128;
 wallThickness = 2;
 
 module JoyStick(){
@@ -75,7 +75,7 @@ module Back(){
                 }
             }
             
-            cylinder(h=62-wallThickness, d=40-wallThickness, $fn=res);
+            cylinder(h=62-wallThickness-10, d=40-wallThickness, $fn=res);
             translate([-25,0,0]){
                 cube([50,25,62]);
             }
@@ -281,7 +281,7 @@ module RemoteHalf(){
         }
         
         translate([0,-38,-15+wallThickness/2]){
-            LipoBay();
+            //LipoBay();
         }
         
         translate([0,-40,25-wallThickness/2]){
