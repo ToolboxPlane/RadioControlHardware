@@ -58,7 +58,7 @@ module ArduinoStack(){
 }
 
 module BasePlate(){
-    cube([62,85,wallThickness]);
+    cube([62-wallThickness,85,wallThickness]);
 }
 
 module JoyStickCutout(){
@@ -204,7 +204,7 @@ module RemoteHalf(){
     
     color("LightGrey"){
         // Top
-        /*difference(){
+        difference(){
             translate([0,-40,44-wallThickness]){
                 BasePlate();
             }
@@ -221,7 +221,7 @@ module RemoteHalf(){
             translate([62-10-wallThickness+5,85-10+5-40,44-wallThickness/2]){
                 cylinder(h=wallThickness, d=3.2, center=true, $fn=res);
             }
-        }*/
+        }
         
         // Bottom
         translate([0,-40,5-wallThickness/2]){
@@ -281,7 +281,7 @@ module RemoteHalf(){
         }
         
         translate([0,-38,-15+wallThickness/2]){
-            //LipoBay();
+            LipoBay();
         }
         
         translate([0,-40,25-wallThickness/2]){
