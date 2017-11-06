@@ -1,7 +1,7 @@
 OPENSCADC=openscad
 INPUT=main.scad
 OUTPUT=main.stl
-FLAGS="res=64"
+FLAGS="parts=\"remote\"; res=8"
 STLVIEWER=meshlab
 
 all: compile view
@@ -13,4 +13,9 @@ clean:
 	rm $(OUTPUT)
 
 view:
-	$(STLVIEWER) $(OUTPUT) & 
+	$(STLVIEWER) $(OUTPUT) 
+
+build:
+	$(OPENSCADC) -o top.stl -D "parts=\"top\"" $(INPUT)
+	$(OPENSCADC) -o body.stl -D "parts=\"body\"" $(INPUT)
+	$(OPENSCADC) -o lipo.stl -D "parts=\"lipo\"" $(INPUT)
