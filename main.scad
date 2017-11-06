@@ -95,7 +95,7 @@ module Side(){
 module Front(){
     difference(){
         cube([62, wallThickness, 40]);
-        translate([12.5,wallThickness/2,25]){
+        translate([12.5,wallThickness/2,25.3]){
             rotate([90,0,0]){
                 cylinder(h=wallThickness, d=15, center=true, $fn=res);
             }
