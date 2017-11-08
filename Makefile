@@ -1,7 +1,7 @@
 OPENSCADC=openscad
 INPUT=main.scad
 OUTPUT=main.stl
-FLAGS="parts=\"remote\"; res=8"
+FLAGS="res=8"
 STLVIEWER=meshlab
 
 all: compile view

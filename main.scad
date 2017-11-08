@@ -1,7 +1,7 @@
 res = 256;
 wallThickness = 2;
 
-parts = "top"; //["top", "body", "lipo", "remote", "all"]
+parts = "lipo"; //["top", "body", "lipo", "remote", "all"]
 
 module JoyStick(){
     color("red"){
@@ -77,12 +77,12 @@ module Back(){
                 }
             }
             
-            cylinder(h=62-wallThickness-10, d=40-wallThickness, $fn=res);
+            cylinder(h=62-wallThickness-10, d=40-2*wallThickness, $fn=res);
             translate([-25,0,0]){
                 cube([50,25,62]);
             }
             translate([0,-18+wallThickness,0]){
-                cube([20,20, 50/2]);
+                cube([20,20, 50/2 + wallThickness]);
             }
         }
     }
@@ -149,13 +149,12 @@ module LipoBay(){
             intersection(){
                 difference(){
                     cylinder(h=50/2 + 2*wallThickness, d=40, $fn=res);
-                    cylinder(h=50/2 + wallThickness, d=40-wallThickness, $fn=res);
+                    cylinder(h=50/2 + wallThickness, d=40-2*wallThickness, $fn=res);
                 }
                 translate([wallThickness,-20,0]){
                     cube([20,20,50/2 + 2*wallThickness]);
                 }
             }
-            
         }
     }
     
@@ -227,6 +226,10 @@ module RemoteHalf(){
                     cylinder(h=wallThickness, d=3.2, center=true, $fn=res);
                 }
             }
+
+            translate([0,-40+85, 5-wallThickness/2]){
+                Front();
+            }
         }
            
         if(parts == "all" || parts == "remote" || parts == "body"){
@@ -292,10 +295,6 @@ module RemoteHalf(){
             }
             translate([62-wallThickness,-40,5-wallThickness/2]){
                 Side();
-            }
-            
-            translate([0,-40+85, 5-wallThickness/2]){
-                Front();
             }
             
             translate([32,0,5+wallThickness/2]){
