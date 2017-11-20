@@ -1,7 +1,7 @@
 res = 256;
 wallThickness = 2;
 
-parts = "lipo"; //["top", "body", "lipo", "remote", "all"]
+parts = "remote"; //["top", "body", "lipo", "remote", "all"]
 
 module JoyStick(){
     color("red"){
@@ -73,16 +73,16 @@ module Back(){
             union(){
                 cylinder(h=62, d=40, $fn=res);
                 translate([0,-18,0]){
-                    cube([20,20, 50/2 +2*wallThickness]);
+                   cube([20,20, 60/2 +2*wallThickness]);
                 }
             }
             
             cylinder(h=62-wallThickness-10, d=40-2*wallThickness, $fn=res);
             translate([-25,0,0]){
-                cube([50,25,62]);
+                cube([60,25,62]);
             }
             translate([0,-18+wallThickness,0]){
-                cube([20,20, 50/2 + wallThickness]);
+                cube([20,20, 60/2 + wallThickness]);
             }
         }
     }
@@ -106,40 +106,40 @@ module Front(){
 module JoyStickMount(){
     difference(){
         union(){
-            cube([25.4, 31.75,15+wallThickness/2]);
+            cube([25.4, 31.75,15+7+wallThickness/2]);
             translate([-wallThickness, -wallThickness, 0]){
                 cube([25.4+2*wallThickness, 31.75+2*wallThickness,wallThickness]);
             }
         }
         
-        translate([2.54, 2.54, (15+wallThickness/2)/2]){
-            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
+        translate([2.54, 2.54, (15+7+wallThickness/2)/2]){
+            cylinder(h=15+7+wallThickness/2, d=3.2, center=true, $fn=res);
         }
-        translate([22.86,2.54 , (15+wallThickness/2)/2]){
-            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
+        translate([22.86,2.54 , (15+7+wallThickness/2)/2]){
+            cylinder(h=15+7+wallThickness/2, d=3.2, center=true, $fn=res);
         }
-        translate([2.54, 29.21, (15+wallThickness/2)/2]){
-            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
+        translate([2.54, 29.21, (15+7+wallThickness/2)/2]){
+            cylinder(h=15+7+wallThickness/2, d=3.2, center=true, $fn=res);
         }
-        translate([22.86, 29.21, (15+wallThickness/2)/2]){
-            cylinder(h=15+wallThickness/2, d=3.2, center=true, $fn=res);
+        translate([22.86, 29.21, (15+7+wallThickness/2)/2]){
+            cylinder(h=15+7+wallThickness/2, d=3.2, center=true, $fn=res);
         }
     }
 }
 
 module LipoBay(){
     difference(){
-        cube([50/2 + 2*wallThickness, 85,10+4*wallThickness]);
+        cube([60/2 + 2*wallThickness, 85,10+4*wallThickness]);
         translate([0, 0, wallThickness]){
-            cube([50/2 +wallThickness, 85-wallThickness,10+4*wallThickness]);
+            cube([60/2 +wallThickness, 85-wallThickness,10+4*wallThickness]);
         }
-        translate([0,85-wallThickness,wallThickness+2]){
-            cube([20,wallThickness,10]);
+        translate([0,85-wallThickness,wallThickness]){
+            cube([10,wallThickness,10]);
         }
-        translate([50/2-2.54,85-2.54-wallThickness*2,5]){
+        translate([50/2-2.54,80-2.54-wallThickness*2,5]){
             cylinder(h=10, d=3.2, center=true, $fn=res);
         }
-        translate([50/2-2.54,85-(68-2.54)-wallThickness*2,5]){
+        translate([50/2-2.54,80-(68-2.54)-wallThickness*2,5]){
             cylinder(h=10, d=3.2, center=true, $fn=res);
         }
     }
@@ -148,17 +148,17 @@ module LipoBay(){
         rotate([0,90,0]){
             intersection(){
                 difference(){
-                    cylinder(h=50/2 + 2*wallThickness, d=40, $fn=res);
-                    cylinder(h=50/2 + wallThickness, d=40-2*wallThickness, $fn=res);
+                    cylinder(h=60/2 + 2*wallThickness, d=40, $fn=res);
+                    cylinder(h=60/2 + wallThickness, d=40-2*wallThickness, $fn=res);
                 }
                 translate([wallThickness,-20,0]){
-                    cube([20,20,50/2 + 2*wallThickness]);
+                    cube([20,20,60/2 + 2*wallThickness]);
                 }
             }
         }
     }
     
-    translate([50/2 + 2*wallThickness, 0, 10+3*wallThickness]){
+    translate([60/2 + 2*wallThickness, 0, 10+3*wallThickness]){
         difference(){
             cube([10,10,wallThickness]);
             translate([5,5,wallThickness/2]){
@@ -167,7 +167,7 @@ module LipoBay(){
         }
     }
     
-    translate([50/2 + 2*wallThickness, 85-10, 10+3*wallThickness]){
+    translate([60/2 + 2*wallThickness, 85-10, 10+3*wallThickness]){
         difference(){
             cube([10,10,wallThickness]);
             translate([5,5,wallThickness/2]){
@@ -198,7 +198,7 @@ module RemoteHalf(){
             JoyStick();
         };
         
-        translate([0,-29+2*wallThickness,-8]){
+        translate([0,-29+2*wallThickness+5,-8]){
             color("blue"){
                 LipoCharger();
             }
@@ -245,10 +245,10 @@ module RemoteHalf(){
                             cube([10,10,40-wallThickness]);
                         }
                     }
-                    translate([50/2 + 2*wallThickness+5,5+wallThickness,wallThickness/2]){
+                    translate([60/2 + 2*wallThickness+5,5+wallThickness,wallThickness/2]){
                         cylinder(h=wallThickness, d=3.2, center=true, $fn=res);
                     }
-                    translate([50/2 + 2*wallThickness+5,85-10+5+wallThickness,wallThickness/2]){
+                    translate([60/2 + 2*wallThickness+5,85-10+5+wallThickness,wallThickness/2]){
                         cylinder(h=wallThickness, d=3.2, center=true, $fn=res);
                     }
                     
